@@ -23,6 +23,9 @@ Run from the project root with its `.venv`:
 | `node --check public/static/app.js` | Pass |
 | `.venv/bin/python -m scripts.benchmark` | 8 illustrative scenarios: 5 feasible, 2 no-fit, 1 incompatible-thickness input rejected |
 | `.venv/bin/python -m scripts.verify_browser` | Actual server/UI flows passed at all six sizes; no page errors or horizontal overflow |
+| `.venv/bin/python -m secondshape examples/demo.json --output output/live/cli-proof.json` followed by `.venv/bin/python -m secondshape output/live/cli-proof.json --verify` | CLI export succeeded; all twelve proof checks true; both exit 0 |
+
+A later repeat of the engine/API suite passed all 21 tests in 40.17 s. The narration assembler passed compilation, help output, real MP3/video metadata probes, and a missing-input check that exited 2 without creating a final video. Its complete render remains unverified until the required nine narration files are supplied.
 
 The eight-case benchmark saves inputs/results/fingerprints under `output/benchmark/`. The demo selected 560 × 240 mm; separate local measurements were approximately 0.35–0.51 s, with runtime depending on concurrent work. The interior-defect case took approximately 1.27 s in the recorded matrix. These are local timings, not a hosted latency guarantee.
 
@@ -50,7 +53,13 @@ A separate reviewer reproduced the original non-finite certificate bug, then ver
 - Geometry and conceptual panel dimensions are checked. Physical build quality, assembly, joinery, safe toolpaths, structural strength and contamination are not.
 - Bounded search is not a global optimum or impossibility proof. Purchased stock counts are heuristic.
 - Environmental evidence is synthetic fixture measurement only. No emissions or actual disposal reduction is established.
-- A captioned silent video is available; natural model TTS and final account publication remain coordinated separately.
+- A captioned motion video is available; complete natural model TTS and final account publication remain coordinated separately. The free voice provider explicitly reached its download quota after one verified narration segment.
 - No native macOS app or RevenueCat integration is claimed.
 
-The exact public source revision and hosted runtime readback are recorded in the release handoff after publication. Until that readback exists, local verification alone is not proof of a hosted service.
+## Public runtime verification
+
+The public workbench is [secondshape.vercel.app](https://secondshape.vercel.app); source is [DominiqueAndrew/secondshape](https://github.com/DominiqueAndrew/secondshape). The first reviewed application revision is `a3ce08681f73e16b742f6f1db77395671e72bfcc`, deployed at immutable URL [secondshape-99k0pi33l-rhetorix.vercel.app](https://secondshape-99k0pi33l-rhetorix.vercel.app).
+
+At 00:49 UTC on 2026-09-08, HTTPS readback verified the actual Python service and matching revision, computed the 560 × 240 mm salvage plan, rechecked all twelve exported-proof checks, returned a bounded failed verification for a malformed nested design, and returned no-fit for an inflexible brief. These are hosted API results, not local fixtures. `output/live/runtime.json` preserves the response receipt.
+
+At 00:55 UTC, the public HTML, JavaScript and CSS returned HTTP 200 and their SHA-256 hashes matched the reviewed local files exactly. `output/live/assets.json` records this comparison. The six-size visual inspection was performed locally against those same assets; a separate six-size hosted-browser run was not performed.

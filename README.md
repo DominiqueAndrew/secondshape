@@ -2,6 +2,8 @@
 
 **Let the offcut have a say.** A Python workbench that changes a design brief to fit the reclaimed material you already have.
 
+[Try the live workbench](https://secondshape.vercel.app) · [Public source](https://github.com/DominiqueAndrew/secondshape)
+
 Most cutting workflows start with a fixed list of parts. SecondShape starts one step earlier: **how little could the design change before buying another panel becomes unnecessary?** Its first workflow is a five-panel, nonstructural desktop organizer.
 
 The app includes editable panels and rectangular defects, grain and kerf constraints, a proportional organizer concept, a fixed-brief comparison, clear failed searches, downloadable coordinates and a reproducible proof file. The Python solver executes on every request; the demo is not a precomputed fixture player.
