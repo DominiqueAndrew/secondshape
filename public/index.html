@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SecondShape — Let the offcut have a say.</title>
+  <meta name="description" content="A salvage-first design workbench. Find the smallest changes that let your offcuts become something useful, with checked geometry and honest material accounting.">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="SecondShape home"><span class="brand-mark">S<span>2</span></span>SecondShape</a><nav aria-label="Main"><a href="#workbench" class="active">Workbench</a><a href="#method">The thinking</a><a href="#evidence">Evidence</a></nav><span class="engine-tag"><i></i> Built with Python</span></header>
+<main>
+  <section class="intro"><div><p class="eyebrow"><span></span> MATERIAL FIRST. POSSIBILITY SECOND.</p><h1>Let the <em>offcut</em><span class="hero-ending"> have a say.</span></h1><p class="lede">A little flexibility in your design. A whole new life for what's left.</p></div><div class="intro-note"><div id="assembly-preview" aria-label="Five-panel organizer concept"></div><p>Make the brief fit the material.<br>Start with a desktop organizer.</p><span class="edition">EXPERIMENT 001 / SALVAGE DESIGN</span></div></section>
+  <section id="workbench" class="workbench">
+    <aside class="inputs"><div class="panel-title"><span class="step">01</span><h2>The brief</h2><span class="unit">mm</span></div><p class="quiet">A five-panel desktop organizer.<br>Keep the purpose. Give the dimensions room.</p>
+      <form id="plan-form"><div class="field-grid"><label>Ideal width<input id="width" type="number" min="100" max="2400" step="1" value="600" required></label><label>Ideal depth<input id="depth" type="number" min="80" max="1200" step="1" value="240" required></label><label>Minimum width<input id="min-width" type="number" min="100" max="2400" step="1" value="520" required></label><label>Minimum depth<input id="min-depth" type="number" min="80" max="1200" step="1" value="200" required></label></div>
+      <div class="small-fields"><label>Height<input id="height" type="number" min="80" max="1200" value="260" required></label><label>Thickness<input id="thickness" type="number" min="1" max="100" value="18" required></label><label>Saw kerf<input id="kerf" type="number" min="0" max="15" step="0.1" value="3" required></label></div>
+      <div class="inventory-heading"><div class="panel-title"><span class="step">02</span><h2>What you've got</h2></div><button class="text-button" type="button" id="add-board" aria-label="Add an offcut">+ Add</button></div>
+      <p class="fixture-label" id="fixture-label">ILLUSTRATIVE INVENTORY · NOT FIELD MEASURED</p><div id="inventory"></div>
+      <details class="advanced"><summary>Edit defects & material as JSON</summary><p>Defects use x, y, width, height in millimetres. Grain x keeps part length along panel length.</p><textarea id="inventory-json" rows="9" spellcheck="false" aria-label="Inventory JSON"></textarea><button type="button" class="secondary compact" id="apply-json">Apply inventory</button></details>
+      <div id="error" class="error" role="alert" hidden></div><button id="solve-button" class="primary" type="submit"><span>Find a second shape</span><span>↗</span></button><p class="micro">10 mm design steps · dimensions stay within your brief</p></form>
+      <button type="button" id="reset" class="text-button reset">↺ Restore the example</button>
+    </aside>
+    <div class="workspace"><div class="workspace-top"><span class="eyebrow">YOUR MATERIAL, REIMAGINED</span><span class="state-pill" id="state-pill">Starting the workbench</span></div>
+      <div class="result-intro"><h2 id="result-heading">A second shape is waiting.</h2><p id="result-description">Checking the brief against your available panels.</p></div>
+      <div class="metrics" id="metrics"><div><strong id="metric-new">—</strong><span>new panels in this plan</span></div><div><strong id="metric-parts">—</strong><span>parts geometrically checked</span></div><div><strong id="metric-change">—</strong><span>width change from brief</span></div></div>
+      <div class="drawing-toolbar"><div class="tabs" role="tablist" aria-label="Plan comparison"><button id="tab-salvage" role="tab" aria-selected="true" class="selected">Second shape</button><button id="tab-baseline" role="tab" aria-selected="false">Fixed brief</button></div><span class="drawing-unit">CUT LAYOUT / ALL DIMENSIONS IN MM</span></div>
+      <div class="drawing-area" id="drawing-area" aria-live="polite"><div class="loading-line">Laying out the possibilities…</div></div>
+      <div class="drawing-legend"><span><i class="legend-part"></i>Part</span><span><i class="legend-remnant"></i>Remainder</span><span><i class="legend-defect"></i>Excluded defect</span><span class="legend-grain">→ Grain direction</span></div>
+      <div class="insight" id="insight"><span class="insight-symbol">↳</span><p>The best material might already be on your shelf.</p></div>
+      <div class="proof-row"><div><span class="proof-icon">✓</span><div><strong id="proof-title">Independent geometry check</strong><p id="proof-text">Bounds, overlap, defects, grain and part completeness.</p></div></div><button id="download" class="secondary" disabled>Download proof ↓</button></div>
+    </div>
+  </section>
+  <section id="evidence" class="evidence"><div><p class="eyebrow">MEASURE WHAT YOU CAN DEFEND</p><h2>Less new material.<br> <em>More honest numbers.</em></h2></div><div class="evidence-copy"><p id="evidence-summary">The comparison uses the same packing heuristic for the original brief and the adjusted design. New stock is a 1220 × 610 mm panel.</p><p>These are calculated results on an illustrative inventory, not observed waste diversion. A smaller design has less material area. No CO₂, landfill or lifetime savings are inferred.</p><div class="evidence-actions"><button class="text-button" id="download-csv" disabled>Export cut list ↗</button><button class="text-button" id="verify" disabled>Recheck geometry ↗</button></div><p id="verify-status" class="micro" role="status"></p></div></section>
+  <section id="method" class="method"><article><span>01 / INVENTORY</span><h3>See what is actually there.</h3><p>Enter rectangular panels, thickness, grain and damaged areas. The sample represents reclaimed plywood, not a scanned object.</p></article><article><span>02 / NEGOTIATE</span><h3>Let the brief bend a little.</h3><p>Python searches a bounded grid of dimensions and tries deterministic packing orders. It ranks feasible designs by their distance from your ideal.</p></article><article><span>03 / VERIFY</span><h3>Make the claim checkable.</h3><p>A separate validator checks the returned rectangles. Export the input, placements, comparison and fingerprint to reproduce the result.</p></article></section>
+  <footer><a class="brand" href="#">SecondShape<span class="brand-dot">↗</span></a><p>A planning experiment for nonstructural projects.<br>Geometry checked. Joinery, strength and safe cutting sequence are not assessed.</p><span>MADE FOR WHAT'S LEFT.</span></footer>
+</main>
+</body></html>

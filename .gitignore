@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.vercel/
+.playwright-cli/
+.env*
+output/
+*.aiff
+*.wav
+*.webm
+*.mp4

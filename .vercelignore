@@ -1,0 +1,10 @@
+.git
+output
+tests
+docs
+*.mp4
+*.webm
+__pycache__
+.pytest_cache
+.venv
+.playwright-cli

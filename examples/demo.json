@@ -1,0 +1,40 @@
+{
+  "design": {
+    "width": 600,
+    "depth": 240,
+    "height": 260,
+    "thickness": 18,
+    "min_width": 520,
+    "min_depth": 200,
+    "step": 10
+  },
+  "kerf": 3,
+  "boards": [
+    {
+      "id": "cabinet",
+      "label": "Cabinet back",
+      "width": 590,
+      "height": 510,
+      "thickness": 18,
+      "material": "plywood",
+      "grain": "x",
+      "defects": [
+        {"x": 565, "y": 0, "width": 25, "height": 510}
+      ]
+    },
+    {
+      "id": "shelf",
+      "label": "Old shelf",
+      "width": 760,
+      "height": 260,
+      "thickness": 18,
+      "material": "plywood",
+      "grain": "x",
+      "defects": []
+    }
+  ],
+  "new_stock": {
+    "width": 1220,
+    "height": 610
+  }
+}
